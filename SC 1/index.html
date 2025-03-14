@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="field.css">
+	<style>
+	* {
+  margin: 0;
+  box-sizing: border-box;
+}	
+.draggable {
+     position: absolute;
+     z-index: 9;
+ }
+
+ .drag-handle {
+     cursor: move;
+     z-index: 10;
+ }
+
+ .full-draggable {
+     cursor: move;
+ }
+
+ /*******************************
+        test css */
+
+ .draggable {
+     background-color: #f1f1f1;
+    
+     text-align: center;
+ }
+
+ .draggable .drag-handle {
+     padding: 10px;
+     background-color: #2196F3;
+     color: #fff;
+ }
+
+ 
+ #field{
+	
+	 background-image:    url(board.JPG);
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+	display: block;
+    margin: 0 auto;
+	position:relative;
+	z-index: 2;
+	/* display: none; */
+}
+
+
+
+  .wrapper{
+            width:100%;
+			 height:100%;
+            display:flex;
+        }
+        .main {
+            width:100%;
+            height:100%;
+           
+            display:flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .aside{
+            height:50%;
+            background:blue;
+            width:5%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+			position: relative;
+			
+ 
+        }
+	.canvas{
+	  width:100%;
+            height:100%;
+	
+	}
+	html, body{
+	  width:100%;
+            height:100%;
+	
+	}
+	 #test-full-draggable {
+	
+    left: 47vw;
+	 top: 24vw;
+ }
+
+	 #test-full-draggable14 {
+		
+     left: 41vw;
+	 top: 24vw;
+ }
+ 
+ 
+  #test-full-draggable13 {
+	
+        left: 25vw;
+	 top: 24vw;
+ }
+ 
+  #test-full-draggable12 {
+	
+         left: 17vw;
+	 top: 10vw;
+ }
+ 
+  #test-full-draggable11 {
+	
+         left: 17vw;
+	 top: 37.5vw;
+ 
+ }
+ 
+   #test-full-draggable10 {
+	
+      left: 33vw;
+	  top: 1vw;
+ }
+ 
+    #test-full-draggable9 {
+	
+      left: 33vw;
+	  top:  47vw;
+ }
+ 
+     #test-full-draggable8 {
+	
+      left: 15vw;
+	  top: 24vw;
+ }
+ 
+      #test-full-draggable7 {
+	
+     left: 53vw;
+	  top: 24vw;
+ }
+ 
+ 
+       #test-full-draggable6 {
+	
+     left: 69.25vw;
+	  top:24.5vw;
+ }
+ 
+        #test-full-draggable5 {
+	
+     left: 77.5vw;
+	  top:37.5vw;
+ }
+ 
+        #test-full-draggable4 {
+	
+     left: 77.5vw;
+	  top:10vw;
+ }
+ 
+        #test-full-draggable3 {
+	
+    left: 62.5vw;
+	  top:47vw;
+ }
+ 
+       #test-full-draggable2 {
+	
+      left: 62.5vw;
+	  top:1vw;
+ }
+ 
+     #test-full-draggable1 {
+	
+     left: 79.5vw;
+	  top:24.5vw;
+ }
+ .colorbutton{
+
+			width:30px;
+			height:40px;
+display: inline-block;
+
+}
+#colors{
+position: relative;
+top:2%;
+
+}
+#settings{
+position: relative;
+top:2%;
+
+
+}
+</style>
+
+<script>
+function grayonly(){
+console.log('grayonly()');
+
+
+
+ball =  document.getElementById('test-full-draggable');
+ball.style.left = "0vw";
+ball.style.top = "0vw";
+black1 =  document.getElementById('test-full-draggable1');
+black1.style.left = "0vw";
+black1.style.top = "0vw";
+black2 =  document.getElementById('test-full-draggable2');
+black2.style.left = "0vw";
+black2.style.top = "0vw";
+black3 =  document.getElementById('test-full-draggable3');
+black3.style.left = "0vw";
+black3.style.top = "0vw";
+black4 =  document.getElementById('test-full-draggable4');
+black4.style.left = "0vw";
+black4.style.top = "0vw";
+black5 =  document.getElementById('test-full-draggable5');
+black5.style.left = "0vw";
+black5.style.top = "0vw";
+black6 =  document.getElementById('test-full-draggable6');
+black6.style.left = "0vw";
+black6.style.top = "0vw";
+black9 =  document.getElementById('test-full-draggable7');
+black9.style.left = "0vw";
+black9.style.top = "0vw";
+gray1 =  document.getElementById('test-full-draggable8');
+gray1.style.left = "15vw";
+gray1.style.top = "24vw";
+gray2 =  document.getElementById('test-full-draggable9');
+gray2.style.left = "33vw";
+gray2.style.top = "47vw";
+gray3 =  document.getElementById('test-full-draggable10');
+gray3.style.left = "33vw";
+gray3.style.top = "1vw";
+gray4 =  document.getElementById('test-full-draggable11');
+gray4.style.left = "17vw";
+gray4.style.top = "37.5vw";
+gray5 =  document.getElementById('test-full-draggable12');
+gray5.style.left = "17vw";
+gray5.style.top = "10vw";
+gray6 =  document.getElementById('test-full-draggable13');
+gray6.style.left = "25vw";
+gray6.style.top = "24vw";
+gray9 =  document.getElementById('test-full-draggable14');
+gray9.style.left = "41vw";
+gray9.style.top = "24vw";
+
+
+};
+function blackonly(){
+console.log('blackonly()');
+
+
+
+ball =  document.getElementById('test-full-draggable');
+ball.style.left = "47vw";
+ball.style.top = "24vw";
+black1 =  document.getElementById('test-full-draggable1');
+black1.style.left = "79.5vw";
+black1.style.top = "24vw";
+black2 =  document.getElementById('test-full-draggable2');
+black2.style.left = "62.5vw";
+black2.style.top = "1vw";
+black3 =  document.getElementById('test-full-draggable3');
+black3.style.left = "62.5vw";
+black3.style.top = "47vw";
+black4 =  document.getElementById('test-full-draggable4');
+black4.style.left = "79.5vw";
+black4.style.top = "10vw";
+black5 =  document.getElementById('test-full-draggable5');
+black5.style.left = "79.5vw";
+black5.style.top = "37.5vw";
+black6 =  document.getElementById('test-full-draggable6');
+black6.style.left = "69.25vw";
+black6.style.top = "24vw";
+black9 =  document.getElementById('test-full-draggable7');
+black9.style.left = "53vw";
+black9.style.top = "24vw";
+gray1 =  document.getElementById('test-full-draggable8');
+gray1.style.left = "0vw";
+gray1.style.top = "0vw";
+gray2 =  document.getElementById('test-full-draggable9');
+gray2.style.left = "0vw";
+gray2.style.top = "0vw";
+gray3 =  document.getElementById('test-full-draggable10');
+gray3.style.left = "0vw";
+gray3.style.top = "0vw";
+gray4 =  document.getElementById('test-full-draggable11');
+gray4.style.left = "0vw";
+gray4.style.top = "0vw";
+gray5 =  document.getElementById('test-full-draggable12');
+gray5.style.left = "0vw";
+gray5.style.top = "0vw";
+gray6 =  document.getElementById('test-full-draggable13');
+gray6.style.left = "0vw";
+gray6.style.top = "0vw";
+gray9 =  document.getElementById('test-full-draggable14');
+gray9.style.left = "0vw";
+gray9.style.top = "0vw";
+
+
+};
+
+function Resetplayers(){
+console.log('restplayers()');
+
+
+
+ball =  document.getElementById('test-full-draggable');
+ball.style.left = "47vw";
+ball.style.top = "24vw";
+black1 =  document.getElementById('test-full-draggable1');
+black1.style.left = "79.5vw";
+black1.style.top = "24vw";
+black2 =  document.getElementById('test-full-draggable2');
+black2.style.left = "62.5vw";
+black2.style.top = "1vw";
+black3 =  document.getElementById('test-full-draggable3');
+black3.style.left = "62.5vw";
+black3.style.top = "47vw";
+black4 =  document.getElementById('test-full-draggable4');
+black4.style.left = "79.5vw";
+black4.style.top = "10vw";
+black5 =  document.getElementById('test-full-draggable5');
+black5.style.left = "79.5vw";
+black5.style.top = "37.5vw";
+black6 =  document.getElementById('test-full-draggable6');
+black6.style.left = "69.25vw";
+black6.style.top = "24vw";
+black9 =  document.getElementById('test-full-draggable7');
+black9.style.left = "53vw";
+black9.style.top = "24vw";
+gray1 =  document.getElementById('test-full-draggable8');
+gray1.style.left = "15vw";
+gray1.style.top = "24vw";
+gray2 =  document.getElementById('test-full-draggable9');
+gray2.style.left = "33vw";
+gray2.style.top = "47vw";
+gray3 =  document.getElementById('test-full-draggable10');
+gray3.style.left = "33vw";
+gray3.style.top = "1vw";
+gray4 =  document.getElementById('test-full-draggable11');
+gray4.style.left = "17vw";
+gray4.style.top = "37.5vw";
+gray5 =  document.getElementById('test-full-draggable12');
+gray5.style.left = "17vw";
+gray5.style.top = "10vw";
+gray6 =  document.getElementById('test-full-draggable13');
+gray6.style.left = "25vw";
+gray6.style.top = "24vw";
+gray9 =  document.getElementById('test-full-draggable14');
+gray9.style.left = "41vw";
+gray9.style.top = "24vw";
+
+
+};
+
+function build1(){
+console.log('build1()');
+
+
+
+ball =  document.getElementById('test-full-draggable');
+ball.style.left = "17vw";
+ball.style.top = "24vw";
+black1 =  document.getElementById('test-full-draggable1');
+black1.style.left = "79.5vw";
+black1.style.top = "24vw";
+black2 =  document.getElementById('test-full-draggable2');
+black2.style.left = "32.5vw";
+black2.style.top = "15vw";
+black3 =  document.getElementById('test-full-draggable3');
+black3.style.left = "32.5vw";
+black3.style.top = "35vw";
+black4 =  document.getElementById('test-full-draggable4');
+black4.style.left = "50vw";
+black4.style.top = "10vw";
+black5 =  document.getElementById('test-full-draggable5');
+black5.style.left = "50vw";
+black5.style.top = "37.5vw";
+black6 =  document.getElementById('test-full-draggable6');
+black6.style.left = "45vw";
+black6.style.top = "20vw";
+black9 =  document.getElementById('test-full-draggable7');
+black9.style.left = "32.5vw";
+black9.style.top = "24vw";
+gray1 =  document.getElementById('test-full-draggable8');
+gray1.style.left = "15vw";
+gray1.style.top = "24vw";
+gray2 =  document.getElementById('test-full-draggable9');
+gray2.style.left = "33vw";
+gray2.style.top = "47vw";
+gray3 =  document.getElementById('test-full-draggable10');
+gray3.style.left = "33vw";
+gray3.style.top = "1vw";
+gray4 =  document.getElementById('test-full-draggable11');
+gray4.style.left = "17vw";
+gray4.style.top = "37.5vw";
+gray5 =  document.getElementById('test-full-draggable12');
+gray5.style.left = "17vw";
+gray5.style.top = "10vw";
+gray6 =  document.getElementById('test-full-draggable13');
+gray6.style.left = "25vw";
+gray6.style.top = "24vw";
+gray9 =  document.getElementById('test-full-draggable14');
+gray9.style.left = "41vw";
+gray9.style.top = "24vw";
+
+
+};
+
+</script>
+</head>
+
+<body >
+<div class="wrapper">
+
+	<main class="main">
+	<button id="clear">Clear</button>
+
+  <canvas id="field" style="width:75%; height:100%; background: url('././images/field.svg'); background-repeat: no-repeat;  background-size: 100%, 100%;">  </canvas> 
+      <div id="test-full-draggable" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/bwball.png'); background-repeat: no-repeat; background-size:100% auto;" ></div>
+ <div id="test-full-draggable1" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/GB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable2" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable3" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>	
+<div id="test-full-draggable4" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable5" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable6" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/CMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable7" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/STB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	
+	<div id="test-full-draggable8" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/GG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable9" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable10" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable11" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable12" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable13" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/CMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable14" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/STG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div> 
+    
+  
+  </main>
+  
+  <aside class="aside">
+<div id="test-draggable" class="draggable" style="display:none;">
+        <div class="drag-handle">Drag using me</div>
+        I'm the <br>content, <br>you can't<br> drag touching<br> there
+    </div>
+
+    <div id="test-draggable2" class="draggable" style="display:none;">
+        <div class="drag-handle">Drag using me</div>
+        It even works with many draggables<br>
+        I'm the <br>content, <br>you can't<br> drag touching<br> there
+    </div>
+
+   
+
+
+ <div id="colors">
+	<button class="colorbutton" onclick="changPenColor('black')" style="background-color: black;"></button>
+  <button class="colorbutton" onclick="changPenColor('red')" style="background-color: red;"></button>
+  <button class="colorbutton" onclick="changPenColor('yellow')" style="background-color: yellow;"></button>
+  <button class="colorbutton" onclick="changPenColor('orange')" style="background-color: orange;"></button>
+    <button class="colorbutton" onclick="changPenColor('hotpink')" style="background-color:  hotpink;"></button>
+	  <button class="colorbutton" onclick="changPenColor('purple')" style="background-color: purple;"></button>
+	  <button class="colorbutton" onclick="changPenColor('white')" style="background-color: white;"></button>
+	  <button class="colorbutton" onclick="changPenColor('gray')" style="background-color: gray;"></button>
+  <button class="settingsbutton" onclick="build1()">Build 1</button>
+  <button class="settingsbutton" onclick="Resetplayers()">Reset players</button>
+   <button class="settingsbutton" onclick="blackonly()">Black Only</button>
+   <button class="settingsbutton" onclick="grayonly()">Gray Only</button>
+  <button class="settingsbutton" onclick="field()">Field Color</button>
+  </div>
+</div>
+<div id="settings">
+	
+
+</div>
+	</aside>
+
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+<script>
+function field(){
+f  = document.getElementById('field');
+bgImg = f.style.backgroundImage;
+if(bgImg == 'url("././images/fieldblack.png")'){
+f.style.backgroundImage="url(././images/field.png)";
+} else {
+
+f.style.backgroundImage="url(././images/fieldblack.png)";
+}
+
+};
+function changPenColor(c){
+
+signaturePad.penColor = c;
+
+};
+
+ 
+            const canvas = document.getElementById('field');
+
+function resizeCanvas() {
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+}
+
+window.onresize = resizeCanvas;
+resizeCanvas();
+
+const signaturePad = new SignaturePad(canvas);
+
+document.getElementById('clear').addEventListener('click', function () {
+    signaturePad.clear();
+});
+/***************************
+        required js */
+
+        function makeDraggable(elmnt) {
+            let pos1 = 0,
+                pos2 = 0,
+                pos3 = 0,
+                pos4 = 0;
+
+            let dragHandle = elmnt.getElementsByClassName("drag-handle")[0];
+
+
+            if (dragHandle !== undefined) {
+                // if present, the header is where you move the DIV from:
+                dragHandle.onmousedown = dragMouseDown;
+                dragHandle.ontouchstart = dragMouseDown; //added touch event
+
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
+                elmnt.ontouchstart = dragMouseDown; //added touch event
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+               
+
+                //Get touch or click position
+                //https://stackoverflow.com/a/41993300/5078983
+                if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+                    let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                    let touch = evt.touches[0] || evt.changedTouches[0];
+                    x = touch.pageX;
+                    y = touch.pageY;
+                } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+
+                console.log("drag start x: "+x+" y:"+y);
+
+                // get the mouse cursor position at startup:
+                pos3 = x;
+                pos4 = y;
+                document.onmouseup = closeDragElement;
+                document.ontouchend = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+                document.ontouchmove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                //Get touch or click position
+                //https://stackoverflow.com/a/41993300/5078983
+                if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+                    let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                    let touch = evt.touches[0] || evt.changedTouches[0];
+                    x = touch.pageX;
+                    y = touch.pageY;
+                } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+
+                // calculate the new cursor position:
+                pos1 = pos3 - x;
+                pos2 = pos4 - y;
+                pos3 = x;
+                pos4 = y;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                console.log("drag end x: "+pos3+" y:"+pos4);
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.ontouchcancel = null; //added touch event
+                document.ontouchend = null; //added touch event
+                document.onmousemove = null;
+                document.ontouchmove = null; //added touch event
+            }
+        }
+
+
+
+
+        /*******************************
+        test js */
+
+        makeDraggable(document.getElementById("test-draggable"));
+        makeDraggable(document.getElementById("test-draggable2"));
+        makeDraggable(document.getElementById("test-full-draggable"));
+		 makeDraggable(document.getElementById("test-full-draggable1"));
+		
+	
+		makeDraggable(document.getElementById("test-full-draggable2"));
+		makeDraggable(document.getElementById("test-full-draggable3"));
+		makeDraggable(document.getElementById("test-full-draggable4"));
+		makeDraggable(document.getElementById("test-full-draggable5"));
+		makeDraggable(document.getElementById("test-full-draggable6"));
+		makeDraggable(document.getElementById("test-full-draggable7"));
+		makeDraggable(document.getElementById("test-full-draggable8"));
+		makeDraggable(document.getElementById("test-full-draggable9"));
+		makeDraggable(document.getElementById("test-full-draggable10"));
+		makeDraggable(document.getElementById("test-full-draggable11"));
+		makeDraggable(document.getElementById("test-full-draggable12"));
+		makeDraggable(document.getElementById("test-full-draggable13"));
+		makeDraggable(document.getElementById("test-full-draggable14"));
+		makeDraggable(document.getElementById("test-full-draggable2")); 
+</script>
+  
+</body>
+
+
+
+
+
+</html>
