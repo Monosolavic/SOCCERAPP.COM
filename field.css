@@ -1,0 +1,208 @@
+
+
+
+/* button {
+  background-color: rgb(82, 186, 179);
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+} */
+#placeholder {
+  height: 100px;
+  width: 100px;
+  padding: 50px;
+  margin: 50px auto;
+  border: 1px solid gray;
+  border-radius: 10px;  
+  font-size:80px;
+}
+
+#field{
+	
+	 background-image:    url(field.png);
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+	display: block;
+    margin: 0 auto;
+	position:relative;
+	z-index: 2;
+	/* display: none; */
+}
+
+.warrior img{
+	
+	background: transparent;
+	width: 30px;
+	height: 30px;
+	/* display: none: */
+}
+.warrior {
+    position: absolute;
+    z-index: 9;
+	
+    /* background-color: #f1f1f1; */
+	/* background-size: 70px 85px;
+    border: 1px solid #d3d3d3; */
+    text-align: center;
+	background:transparent;
+	/* display: none; */
+}
+.gmBtnheader{
+	padding: 10px;
+	position:relative;
+    cursor: move;
+	text-align:bottom;
+	
+    z-index: 99!important;
+    /*  background-color: #2196F3; 
+    color: #fff; */
+	background:transparent;
+	/* display: none; */
+	
+}
+.warriorheader {
+    padding: 1px;
+    cursor: move;
+	text-align:bottom;
+    z-index: 10;
+	position:relative;
+	left: 10px;
+	top: 25px;
+	
+    /*  background-color: #2196F3; 
+    color: #fff; */
+	background:transparent;
+	/* display: none; */
+}
+.btn-group{
+	width: 100px;
+	height: 40px;
+	display: block;
+    
+	
+}
+
+.redBtn{
+	 background-color: #d61114; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black;
+	
+}
+.whiteBtn{
+	 background-color: #FAFAFA; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+	
+}
+.blueBtn{
+	 background-color: #4286f4; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+	
+}
+.darkGrayBtn{
+	 background-color: #6f7072; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+}
+.grayBtn{
+	 background-color: #cc0c6; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+}
+.greenBtn{
+	background-color: #1c8234; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+}
+.orgBtn{
+	background-color: #f2af74; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black; 
+}
+.drkOrgBtn{
+	background-color:#e56c02; 
+    border: 1px solid black; 
+	width: 100%;
+	height: 30px;
+    color: black;
+}
+.btn-group button {
+    /*  background-color: #4CAF50; 
+    border: 1px solid green; 
+	width: 100%;
+	height: 30px;
+    color: white;  */
+	/* White text */
+    /*padding: 10px 10px; Some padding */
+    /* cursor: pointer; Pointer/hand icon */
+   /* width: 10px;  Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+	
+}
+
+.btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+	
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #0f0700;
+	color:white;
+} 
+
+#leftButtons{
+	float:left;
+	height:399px;
+	width: 33.333%;
+}
+#rightButtons{
+	float:right;
+	height:399px;
+	width: 33.333%;
+}
+#middleButtons{
+	display: inline-block;
+	margin:0 auto;
+	width: 33.333%;
+	height:399px;
+	
+	
+}
+.gameButtons{
+	/* float: left; */
+	z-index: 99;
+	display: block;
+	margin: 0 auto;
+	width:270px;
+	height:400px;
+	position:absolute;
+	
+}
+ #gamePieces{
+	
+	clear:both;
+	margin-top:200px;
+	display: block;
+	float:bottom;
+} 
