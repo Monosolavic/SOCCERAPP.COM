@@ -21,7 +21,13 @@
  .full-draggable {
      cursor: move;
  }
+.full-draggable{
 
+max-width: 4vw;
+max-height: 8vh;
+min-width: 2vw;
+min-height: 4vh;
+}
  /*******************************
         test css */
 
@@ -54,13 +60,13 @@
 
 
   .wrapper{
-            width:100%;
-			 height:100%;
+            width:100vw;
+			 height:100vh;
             display:flex;
         }
         .main {
-            width:100%;
-            height:100%;
+            width:100vw;
+            height:100vh;
            
             display:flex;
             justify-content: center;
@@ -68,9 +74,9 @@
 
         }
         .aside{
-            height:50%;
+            height:100vh;
             background:blue;
-            width:5%;
+            width:10vh;
             display:flex;
             justify-content: center;
             align-items: center;
@@ -79,13 +85,13 @@
  
         }
 	.canvas{
-	  width:100%;
-            height:100%;
+	  width:100vw;
+            height:100vh;
 	
 	}
 	html, body{
-	  width:100%;
-            height:100%;
+	  width:100vw;
+            height:100vh;
 	
 	}
 	 #test-full-draggable {
@@ -182,25 +188,61 @@
  }
  .colorbutton{
 
-			width:30px;
-			height:40px;
+			width:3vw;
+			height:4vh;
 display: inline-block;
 
 }
 #colors{
 position: relative;
-top:2%;
+top:2vh;
 
 }
 #settings{
 position: relative;
-top:2%;
+top:2vh;
 
 
 }
 </style>
 
 <script>
+
+function increasSize(){
+var maxW = 6;
+var maxH = 18;
+
+var elements = document.getElementsByClassName("draggable full-draggable");
+for (var i = 0, len = elements.length; i < len; i++) {
+     console.log(elements[i].style.width);
+	 console.log(elements[i].style.height);
+	var curW = elements[i].style.width;
+	 var curH = elements[i].style.height;
+	 
+	 elements[i].style.width = parseInt(curW.slice(0,-2)) + 1 +'vw';
+	 elements[i].style.height = parseInt(curH.slice(0,-2)) + 1 +'vh';
+}
+
+
+};
+
+function decreaseSize(){
+var maxW = 6;
+var maxH = 18;
+
+var elements = document.getElementsByClassName("draggable full-draggable");
+for (var i = 0, len = elements.length; i < len; i++) {
+     console.log(elements[i].style.width);
+	 console.log(elements[i].style.height);
+	var curW = elements[i].style.width;
+	 var curH = elements[i].style.height;
+	 
+	 elements[i].style.width = parseInt(curW.slice(0,-2)) - 1 +'vw';
+	 elements[i].style.height = parseInt(curH.slice(0,-2)) - 1 +'vh';
+}
+
+
+};
 function grayonly(){
 console.log('grayonly()');
 
@@ -426,22 +468,22 @@ gray9.style.top = "24vw";
 	<button id="clear">Clear</button>
 
   <canvas id="field" style="width:75%; height:100%; background: url('././images/field.svg'); background-repeat: no-repeat;  background-size: 100%, 100%;">  </canvas> 
-      <div id="test-full-draggable" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/bwball.png'); background-repeat: no-repeat; background-size:100% auto;" ></div>
- <div id="test-full-draggable1" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/GB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-<div id="test-full-draggable2" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-<div id="test-full-draggable3" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>	
-<div id="test-full-draggable4" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-<div id="test-full-draggable5" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-<div id="test-full-draggable6" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/CMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-<div id="test-full-draggable7" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/STB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+      <div id="test-full-draggable" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/bwball.png'); background-repeat: no-repeat; background-size:100% auto;" ></div>
+ <div id="test-full-draggable1" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/GB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable2" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/RMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable3" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/LMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>	
+<div id="test-full-draggable4" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/RDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable5" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/LDB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable6" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/CMB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+<div id="test-full-draggable7" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/STB.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
 	
-	<div id="test-full-draggable8" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/GG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable9" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable10" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable11" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/RDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable12" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/LDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable13" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/CMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
-	<div id="test-full-draggable14" class="draggable full-draggable" style="width:2%;  height:6%; background: url('./images/STG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div> 
+	<div id="test-full-draggable8" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/GG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable9" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/RMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable10" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/LMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable11" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/RDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable12" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/LDG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable13" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/CMG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div>
+	<div id="test-full-draggable14" class="draggable full-draggable" style="width:2vw;  height:6vh; background: url('./images/STG.png');background-repeat: no-repeat;  background-size:100% auto;" ></div> 
     
   
   </main>
@@ -475,6 +517,8 @@ gray9.style.top = "24vw";
    <button class="settingsbutton" onclick="blackonly()">Black Only</button>
    <button class="settingsbutton" onclick="grayonly()">Gray Only</button>
   <button class="settingsbutton" onclick="field()">Field Color</button>
+  <button class="settingsbutton" onclick="increasSize()">Increase</button>
+   <button class="settingsbutton" onclick="decreaseSize()">Decrease</button>
   </div>
 </div>
 <div id="settings">
